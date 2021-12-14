@@ -237,7 +237,7 @@ Element.prototype.attr = function(k, v) {
     if (k === 'value') {
         if (typeof v !== 'undefined') {
             this.value = v;
-        } else if (typeof this.value !== 'undefined' && this.value.tostring().length > 0) {
+        } else if (typeof this.value !== 'undefined' && this.value.toString().length > 0) {
             return this.value
         }
     }
@@ -639,30 +639,17 @@ NodeList.prototype.css = function(stylesHash) {
 };
 
 /**
- * Query for existing element ot create it
- *
- * @param t {string|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
- *                                                    element
- * @param $el {Element} - DOM element to query from
- * @return {any|HTMLElement} - returns a new element we wanted to create,
- *                             the element we queried for oR an empty NodeList
- * @constructor
+ * @return {Element} - return the body
  */
-const El = function(t, $el) {
-    let q = Query(t, $el);
-    if (typeof q !== 'undefined') { return q; }
-
-    return document.createElement(t);
-};
+const Body = function() { return document.querySelector('body') };
 
 /**
  *
  * @param t {string|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
  *                                                    element
  *
- * @param $el {Element|undefined=} - DOM element to query from
+ * @param {Element|undefined=} $el - DOM element to query from
  * @return {any} - returns the element we queried for oR an empty NodeList
- * @constructor
  */
 const Query = function(t, $el) {
     let q;
@@ -682,43 +669,42 @@ const Query = function(t, $el) {
 };
 
 /**
+ * Query for existing element ot create it
  *
+ * @param t {string|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
+ *                                                    element
+ * @param {Element=} $el - DOM element to query from
+ * @return {any|HTMLElement} - returns a new element we wanted to create,
+ *                             the element we queried for oR an empty NodeList
+ */
+const El = function(t, $el) {
+    let q = Query(t, $el);
+    if (typeof q !== 'undefined') { return q; }
+
+    return document.createElement(t);
+};
+
+/**
  * @return {Element} - return a new div element
- * @constructor
  */
 const Div = function() { return El('div') };
 
 /**
- *
  * @return {Element} - return a new textarea element
- * @constructor
  */
 const TextArea = function() { return El('textarea') };
 
 /**
- *
  * @return {Element} - return a new input element
- * @constructor
  */
 const Input = function() { return El('input') };
 
 /**
- *
  * @return {Element} - return a new span element
- * @constructor
  */
 const Span = function() { return El('span') };
 
 /**
- *
  * @return {Element} - return a new img element
- * @constructor
  */
 const Img = function() { return El('img') };
-
-/**
- *
- * @return {Element} - return the body
- * @constructor
- */
-const Body = function() { return document.querySelector('body') };
