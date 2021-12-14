@@ -7,7 +7,7 @@ const Elements = {
     /**
      * A wrapper to addEventListener to help manage events on a larger scale and enable removing them easily
      *
-     * @param action {String} - the name of the event we would like to listen to
+     * @param action {string} - the name of the event we would like to listen to
      * @param callback {Function} - the event handler - the callback function to handle the event
      */
     on: function(action, callback) {
@@ -26,7 +26,7 @@ const Elements = {
     /**
      * A wrapper to dispatchEvent, meant to simplify creating custom event
      *
-     * @param action {String} - the name for the event that is being dispatched
+     * @param action {string} - the name for the event that is being dispatched
      * @param detail {Object} (optional) - the event details - default is an empty object, best practice will be to
      *                                     pass the details as properties
      * @param event_init {EventInit} (optional) - a dictionary with the following fields: bubbles, cancelable, composed
@@ -41,7 +41,7 @@ const Elements = {
      * your event handlers without saving and supplying them on your own, enabling the use of arrow functions as
      * event handlers and maintaining scope easier
      *
-     * @param action {String} - the name for the event that we want to unbind
+     * @param action {string} - the name for the event that we want to unbind
      * @param callback {Function} (optional) - the event handler - the callback function to unbind
      */
     unbind: function (action, callback) {
@@ -85,7 +85,7 @@ Element.prototype.empty = function() {
 /**
  * Easily add multiple classes to element
  *
- * @param cls {String} - list of class names separated by spaces
+ * @param cls {string} - list of class names separated by spaces
  * @return {Element} - return this (the element who called the function)
  */
 Element.prototype.addClass = function(cls) {
@@ -98,7 +98,7 @@ Element.prototype.addClass = function(cls) {
 /**
  * Easily remove multiple classes from element
  *
- * @param cls {String} - list of class names separated by spaces
+ * @param cls {string} - list of class names separated by spaces
  * @return {Element} - return this (the element who called the function)
  */
 Element.prototype.removeClass = function(cls) {
@@ -121,7 +121,7 @@ Element.prototype.hasClass = function(cls) {
 /**
  * Toggle element classes
  *
- * @param cls {String} - a list of class names separated with spaces
+ * @param cls {string} - a list of class names separated with spaces
  * @return {Element} - return this (the element who called the function)
  */
 Element.prototype.toggleClass = function(cls) {
@@ -141,7 +141,7 @@ Element.prototype.forEach = function(callback) {
 /**
  * Append as child element if element is of type Element, if it's of type string or number add as text
  *
- * @param element {Element|String|Number} - the data to append
+ * @param element {Element|string|number} - the data to append
  * @return {Element} - return this (the element who called the function)
  */
 const nativeAppend = Element.prototype.append;
@@ -168,7 +168,7 @@ if (typeof nativeAppend !== 'function') {
 /**
  * Override the element inner HTML with the given element data
  *
- * @param element {Element|String|Number} - the new data to override with
+ * @param element {Element|string|number} - the new data to override with
  * @return {Element} - return this (the element who called the function)
  */
 Element.prototype.html = function(element) {
@@ -228,9 +228,9 @@ Element.prototype.text = function(text) {
 /**
  * Get or set an element's attribute
  *
- * @param k {String} - the attribute key
+ * @param k {string} - the attribute key
  * @param v {*}, optional - the attribute value
- * @return {String|Element|*} - returns this if attr was set (v is defined), return (get) the attr's value if
+ * @return {string|Element|*} - returns this if attr was set (v is defined), return (get) the attr's value if
  *                              v is undefined
  */
 Element.prototype.attr = function(k, v) {
@@ -256,7 +256,7 @@ Element.prototype.attr = function(k, v) {
  * Get or set the value attr specifically
  *
  * @param v {*}, optional - the value to set
- * @return {String|Element|*} - returns this if value was set (v is defined), return (get) the value if v is undefined
+ * @return {string|Element|*} - returns this if value was set (v is defined), return (get) the value if v is undefined
  */
 Element.prototype.val = function(v) {
     return this.attr('value', v);
@@ -265,7 +265,7 @@ Element.prototype.val = function(v) {
 /**
  * Use our predefined on function to listen to event on elements
  *
- * @param action {String} - event name
+ * @param action {string} - event name
  * @param callback {Function} - event handler callback
  */
 Element.prototype.on = function(action, callback) { Elements.on.call(this, action, callback) };
@@ -273,7 +273,7 @@ Element.prototype.on = function(action, callback) { Elements.on.call(this, actio
 /**
  * Use our predefined dispatch function to trigger new custom events from the element
  *
- * @param action {String}, event name
+ * @param action {string}, event name
  * @param detail {Object},(optional) - the event details - default is an empty object,
  *                                     best practice will be to pass the details as properties
  * @param event_init {EventInit} (optional) - a dictionary with the following fields: bubbles, cancelable, composed
@@ -283,7 +283,7 @@ Element.prototype.dispatch = function(action, detail, event_init) { Elements.dis
 /**
  * Use our predefined unbind function to easily remove event listeners set with our on function from the element
  *
- * @param action {String} - the name for the event that we want to unbind
+ * @param action {string} - the name for the event that we want to unbind
  * @param callback {Function} (optional) - the event handler - the callback function to unbind
  */
 Element.prototype.unbind = function(action, callback) { Elements.unbind.call(this, action, callback) };
@@ -291,7 +291,7 @@ Element.prototype.unbind = function(action, callback) { Elements.unbind.call(thi
 /**
  * Query for sub-elements of the calling element
  *
- * @param t {String} - the query string (class names, id, etc...)
+ * @param t {string} - the query string (class names, id, etc...)
  * @return {Element|undefined} - return the sub elements that were queried or undefined if they do not exist
  */
 Element.prototype.find = function(t) {
@@ -325,7 +325,7 @@ Element.prototype.length = 1;
 /**
  * Use our predefined on function to listen to event on the Document
  *
- * @param action {String} - event name
+ * @param action {string} - event name
  * @param callback {Function} - event handler callback
  */
 Document.prototype.on = function(action, callback) { Elements.on.call(this, action, callback) };
@@ -333,7 +333,7 @@ Document.prototype.on = function(action, callback) { Elements.on.call(this, acti
 /**
  * Use our predefined dispatch function to trigger new custom events from the Document
  *
- * @param action {String}, event name
+ * @param action {string}, event name
  * @param detail {Object},(optional) - the event details - default is an empty object,
  *                                     best practice will be to pass the details as properties
  *
@@ -344,7 +344,7 @@ Document.prototype.dispatch = function(action, detail, event_init) { Elements.di
 /**
  * Use our predefined unbind function to easily remove event listeners set with our on function from the Document
  *
- * @param action {String} - the name for the event that we want to unbind
+ * @param action {string} - the name for the event that we want to unbind
  * @param callback {Function} (optional) - the event handler - the callback function to unbind
  */
 Document.prototype.unbind = function(action, callback) { Elements.unbind.call(this, action, callback) };
@@ -352,7 +352,7 @@ Document.prototype.unbind = function(action, callback) { Elements.unbind.call(th
 /**
  * Use our predefined on function to listen to event on the Window
  *
- * @param action {String} - event name
+ * @param action {string} - event name
  * @param callback {Function} - event handler callback
  */
 Window.prototype.on = function(action, callback) { return Elements.on.call(this, action, callback) };
@@ -360,7 +360,7 @@ Window.prototype.on = function(action, callback) { return Elements.on.call(this,
 /**
  * Use our predefined dispatch function to trigger new custom events from the Window
  *
- * @param action {String}, event name
+ * @param action {string}, event name
  * @param detail {Object},(optional) - the event details - default is an empty object,
  *                                     best practice will be to pass the details as properties
  *
@@ -371,7 +371,7 @@ Window.prototype.dispatch = function(action, detail, event_init) { Elements.disp
 /**
  * Use our predefined unbind function to easily remove event listeners set with our on function from the Window
  *
- * @param action {String} - the name for the event that we want to unbind
+ * @param action {string} - the name for the event that we want to unbind
  * @param callback {Function} (optional) - the event handler - the callback function to unbind
  */
 Window.prototype.unbind = function(action, callback) { Elements.unbind.call(this, action, callback) };
@@ -409,7 +409,7 @@ NodeList.prototype.empty = function() {
 /**
  * Apply Element.prototype.addClass to all the elements in the NodeList
  *
- * @param cls {String} - a space separated list of classes to add
+ * @param cls {string} - a space separated list of classes to add
  * @return {NodeList} - return this (the NodeList who called the function)
  */
 NodeList.prototype.addClass = function(cls) {
@@ -420,7 +420,7 @@ NodeList.prototype.addClass = function(cls) {
 /**
  * Apply Element.prototype.removeClass to all the elements in the NodeList
  *
- * @param cls {String} - a space separated list of classes to remove
+ * @param cls {string} - a space separated list of classes to remove
  * @return {NodeList} - return this (the NodeList who called the function)
  */
 NodeList.prototype.removeClass = function(cls) {
@@ -431,7 +431,7 @@ NodeList.prototype.removeClass = function(cls) {
 /**
  * Apply Element.prototype.toggleClass to all the elements in the NodeList
  *
- * @param cls {String} - a list of class names separated with spaces
+ * @param cls {string} - a list of class names separated with spaces
  * @return {NodeList} - return this (the NodeList who called the function)
  */
 NodeList.prototype.toggleClass = function(cls) {
@@ -442,7 +442,7 @@ NodeList.prototype.toggleClass = function(cls) {
 /**
  * Check if any of the elements in the NodeList have the class
  *
- * @param cls {String} - a class name
+ * @param cls {string} - a class name
  * @return {boolean}
  */
 NodeList.prototype.hasClass = function(cls) {
@@ -455,7 +455,7 @@ NodeList.prototype.hasClass = function(cls) {
 
 /**
  *
- * @param element {Element|String|Number} - the element (can also be string or number) to append
+ * @param element {Element|string|number} - the element (can also be string or number) to append
  * @return {NodeList} - return this (the NodeList who called the function)
  */
 NodeList.prototype.append = function(element) {
@@ -466,7 +466,7 @@ NodeList.prototype.append = function(element) {
 /**
  * Filter out elements from the NodeList using a css selector or an Element or a NodeList
  *
- * @param cssSelectorOrNodeOrNodeList {String|Element|NodeList} - the data to filter away
+ * @param cssSelectorOrNodeOrNodeList {string|Element|NodeList} - the data to filter away
  * @return {NodeList} - a filtered NodeList
  */
 // TT Note - origin: https://stackoverflow.com/questions/49848148/pure-javascript-how-to-select-all-selectors-but-not-this
@@ -498,7 +498,7 @@ NodeList.prototype.not = function ( cssSelectorOrNodeOrNodeList ) {
 /**
  * Apply Element's replaceWith on all elements in the NodeList
  *
- * @param element {Node|String} - the data (Node, String) to replace with
+ * @param element {Node|string} - the data (Node, string) to replace with
  * @return {NodeList} - return this (the NodeList who called the function)
  */
 NodeList.prototype.replaceWith = function(element) {
@@ -532,8 +532,8 @@ NodeList.prototype.html = function(element) {
  * Get or set NodeList text
  * Override the existing NodeList's elements text with the given text or return text of the first node in the list
  *
- * @param text {String} - the new text to override with
- * @return {NodeList|String|*} - this or the text of the first element
+ * @param text {string} - the new text to override with
+ * @return {NodeList|string|*} - this or the text of the first element
  */
 NodeList.prototype.text = function(text) {
     if (typeof text === 'undefined' && this.length > 0) { return this[0].text() }
@@ -548,7 +548,7 @@ NodeList.prototype.text = function(text) {
  * return value of the first node in the list
  *
  * @param v {*} - any value that can be converted to string
- * @return {NodeList|String|Element|string|*} - this or the value attribute of the first element
+ * @return {NodeList|string|Element|string|*} - this or the value attribute of the first element
  */
 NodeList.prototype.val = function(v) {
     if (typeof v === 'undefined' && this.length > 0) { return this[0].val() }
@@ -560,7 +560,7 @@ NodeList.prototype.val = function(v) {
 /**
  * Set the attribute for all elements in the NodeList
  *
- * @param k {String} - the attribute key
+ * @param k {string} - the attribute key
  * @param v {*} - the attribute's value (any value that can be converted to string)
  * @return {NodeList} - this
  */
@@ -572,7 +572,7 @@ NodeList.prototype.attr = function(k,v) {
 /**
  * Set event listener to all elements in the NodeList
  *
- * @param action {String} - event name
+ * @param action {string} - event name
  * @param callback {function} - event handler (callback function)
  * @return {NodeList} - this
  */
@@ -584,7 +584,7 @@ NodeList.prototype.on = function(action, callback) {
 /**
  * Trigger a new custom event for all elements in the NodeList
  *
- * @param action {String}, event name
+ * @param action {string}, event name
  * @param detail {Object},(optional) - the event details - default is an empty object,
  *                                     best practice will be to pass the details as properties
  *
@@ -600,7 +600,7 @@ NodeList.prototype.dispatch = function(action, detail, event_init) {
 /**
  * Unbind the event handler from all elements in the NodeList
  *
- * @param action {String} - the name for the event that we want to unbind
+ * @param action {string} - the name for the event that we want to unbind
  * @param callback {Function} (optional) - the event handler - the callback function to unbind
  * @return {NodeList} - this
  */
@@ -612,7 +612,7 @@ NodeList.prototype.unbind = function(action, callback) {
 /**
  * Query from all NodeList's elements and return merged results
  *
- * @param t {String} - query string
+ * @param t {string} - query string
  * @return {NodeListOf<ChildNode>} - all queried results
  */
 NodeList.prototype.querySelectorAll = function(t) {
@@ -639,30 +639,17 @@ NodeList.prototype.css = function(stylesHash) {
 };
 
 /**
- * Query for existing element ot create it
- *
- * @param t {String|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
- *                                                    element
- * @param $el {Element} - DOM element to query from
- * @return {any|HTMLElement} - returns a new element we wanted to create,
- *                             the element we queried for oR an empty NodeList
- * @constructor
+ * @return {Element} - return the body
  */
-const El = function(t, $el) {
-    let q = Query(t, $el);
-    if (typeof q !== 'undefined') { return q; }
-
-    return document.createElement(t);
-};
+const Body = function() { return document.querySelector('body') };
 
 /**
  *
- * @param t {String|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
+ * @param t {string|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
  *                                                    element
  *
- * @param $el {Element|undefined=} - DOM element to query from
+ * @param {Element|undefined=} $el - DOM element to query from
  * @return {any} - returns the element we queried for oR an empty NodeList
- * @constructor
  */
 const Query = function(t, $el) {
     let q;
@@ -682,43 +669,42 @@ const Query = function(t, $el) {
 };
 
 /**
+ * Query for existing element ot create it
  *
+ * @param t {string|ElementCreationOptions|Element} - the element we wish to create or a css selector string or a DOM
+ *                                                    element
+ * @param {Element=} $el - DOM element to query from
+ * @return {any|HTMLElement} - returns a new element we wanted to create,
+ *                             the element we queried for oR an empty NodeList
+ */
+const El = function(t, $el) {
+    let q = Query(t, $el);
+    if (typeof q !== 'undefined') { return q; }
+
+    return document.createElement(t);
+};
+
+/**
  * @return {Element} - return a new div element
- * @constructor
  */
 const Div = function() { return El('div') };
 
 /**
- *
  * @return {Element} - return a new textarea element
- * @constructor
  */
 const TextArea = function() { return El('textarea') };
 
 /**
- *
  * @return {Element} - return a new input element
- * @constructor
  */
 const Input = function() { return El('input') };
 
 /**
- *
  * @return {Element} - return a new span element
- * @constructor
  */
 const Span = function() { return El('span') };
 
 /**
- *
  * @return {Element} - return a new img element
- * @constructor
  */
 const Img = function() { return El('img') };
-
-/**
- *
- * @return {Element} - return the body
- * @constructor
- */
-const Body = function() { return document.querySelector('body') };
